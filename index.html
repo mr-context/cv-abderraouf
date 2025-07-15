@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messaoudi Abderraouf - CV</title>
+    <title>Messaoudi Abderraouf - Resume</title>
     <style>
         * {
             margin: 0;
@@ -58,6 +58,58 @@
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translateX(0);
+        }
+
+        .toggle-switch.french::before {
+            transform: translateX(24px);
+        }
+
+        .lang-label {
+            font-size: 0.9em;
+            font-weight: 600;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-label.active {
+            opacity: 1;
         }
 
         .header h1 {
@@ -268,6 +320,19 @@
             grid-column: 1 / -1;
         }
 
+        /* Hidden content by default */
+        .content-fr {
+            display: none;
+        }
+
+        .lang-fr .content-en {
+            display: none;
+        }
+
+        .lang-fr .content-fr {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -294,6 +359,12 @@
             .languages {
                 justify-content: center;
             }
+
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+            }
         }
 
         @media print {
@@ -312,7 +383,7 @@
                 color: white;
             }
 
-            .pdf-download {
+            .pdf-download, .language-toggle {
                 display: none;
             }
         }
@@ -321,184 +392,423 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Messaoudi Abderraouf</h1>
-            <p class="subtitle">Développeur, Réseaux & Automatisation</p>
-            <div class="contact-info">
-                <div class="contact-item" data-icon="📍">Alger</div>
-                <div class="contact-item" data-icon="📧">mesaoudi.raouf@outlook.com</div>
-                <div class="contact-item" data-icon="📞">0557042421</div>
+            <div class="language-toggle">
+                <span class="lang-label active" id="en-label">EN</span>
+                <div class="toggle-switch" id="languageToggle"></div>
+                <span class="lang-label" id="fr-label">FR</span>
             </div>
+
+            <h1>Messaoudi Abderraouf</h1>
             
-            <div class="pdf-download">
-                <a href="#" onclick="window.print(); return false;" class="download-btn">
-                    📄 Télécharger PDF
-                </a>
+            <!-- English Content -->
+            <div class="content-en">
+                <p class="subtitle">Developer, Networks & Automation</p>
+                <div class="contact-info">
+                    <div class="contact-item" data-icon="📍">Algiers</div>
+                    <div class="contact-item" data-icon="📧">mesaoudi.raouf@outlook.com</div>
+                    <div class="contact-item" data-icon="📞">0557042421</div>
+                </div>
+                
+                <div class="pdf-download">
+                    <a href="#" onclick="window.print(); return false;" class="download-btn">
+                        📄 Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <!-- French Content -->
+            <div class="content-fr">
+                <p class="subtitle">Développeur, Réseaux & Automatisation</p>
+                <div class="contact-info">
+                    <div class="contact-item" data-icon="📍">Alger</div>
+                    <div class="contact-item" data-icon="📧">mesaoudi.raouf@outlook.com</div>
+                    <div class="contact-item" data-icon="📞">0557042421</div>
+                </div>
+                
+                <div class="pdf-download">
+                    <a href="#" onclick="window.print(); return false;" class="download-btn">
+                        📄 Télécharger PDF
+                    </a>
+                </div>
             </div>
         </header>
 
         <main class="main-content">
             <div class="section">
-                <h2>🧑‍💼 Expériences professionnelles</h2>
-                
-                <div class="experience-item">
-                    <h3>Responsable IT</h3>
-                    <div class="company">Bessa Promotion Immobilière (Alger)</div>
-                    <div class="period">2022 – Aujourd'hui</div>
-                    <ul>
-                        <li>Support IT & gestion réseau (serveurs HP ProLiant, Proxmox, VLAN, Ubiquiti Unifi)</li>
-                        <li>Développement de solutions internes (contrôle d'accès via Raspberry Pi, intégration Biotime, automatisation RH via API)</li>
-                        <li>Développement de modules Odoo (achats, automatisations, lien avec GLPI)</li>
-                        <li>Participation à la migration d'Odoo avec l'équipe Dev interne</li>
-                        <li><strong>Développement d'un chatbot AI contextuel</strong> (modèles internes + n8n) connecté aux données de l'entreprise</li>
-                    </ul>
+                <!-- English Professional Experience -->
+                <div class="content-en">
+                    <h2>👨‍💼 Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <h3>IT Manager</h3>
+                        <div class="company">Bessa Promotion Immobilière (Algiers)</div>
+                        <div class="period">2022 – Present</div>
+                        <ul>
+                            <li>IT Support & network management (HP ProLiant servers, Proxmox, VLAN, Ubiquiti Unifi)</li>
+                            <li>Development of internal solutions (access control via Raspberry Pi, Biotime integration, HR automation via API)</li>
+                            <li>Odoo module development (purchasing, automation, GLPI integration)</li>
+                            <li>Participation in Odoo migration with internal Dev team</li>
+                            <li><strong>Development of a contextual AI chatbot</strong> (internal models + n8n) connected to company data</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Freelance Odoo / IT Integration</h3>
+                        <div class="company">SmoothTechnologie, GNT Mobile</div>
+                        <div class="period">2021 – 2022</div>
+                        <ul>
+                            <li>Odoo integration for access control company (sales management, inventory, business processes)</li>
+                            <li>Installation of HP ProLiant servers under CentOS 7 with redundancy for GNT Mobile production unit</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>R&D Project – Digimarc & Odoo Integration</h3>
+                        <div class="company">Independent Project</div>
+                        <div class="period">2020 – 2021</div>
+                        <ul>
+                            <li>Technical study of invisible barcodes (Digimarc type) for pharmaceutical traceability</li>
+                            <li>Collaboration with a Sandoz partner printing company</li>
+                            <li>Analysis of printing processes and code generation</li>
+                            <li>Project discontinued for regulatory reasons</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Odoo Developer Intern</h3>
+                        <div class="company">Pharmaceutical Office Project</div>
+                        <div class="period">2019 – 2020</div>
+                        <ul>
+                            <li>Odoo integration in pharmacies (POS, sales and inventory management)</li>
+                            <li>Development of pharmaceutical business modules</li>
+                            <li>Collaboration with Digimarc Solutions for traceability</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Store Manager</h3>
+                        <div class="company">IPTV / Television Solutions</div>
+                        <div class="period">2018 – 2019</div>
+                        <ul>
+                            <li>Management of 3 stores (sales, installation, customer service)</li>
+                            <li>Implementation of Odoo POS for sales</li>
+                            <li>Logistics configuration (inventory, locations, optimized business processes)</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Telesales / Pharmaceutical Sales Rep</h3>
+                        <div class="company">Somepharme, IVPP, Hydrapharm, Générique-Pharm</div>
+                        <div class="period">2014 – 2018</div>
+                        <ul>
+                            <li>B2B telesales and medical visits</li>
+                            <li>Management of client portfolio in pharmaceutical sector</li>
+                            <li>Good knowledge of pharmaceutical distribution chain</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="experience-item">
-                    <h3>Freelance Odoo / Intégration IT</h3>
-                    <div class="company">SmoothTechnologie, GNT Mobile</div>
-                    <div class="period">2021 – 2022</div>
-                    <ul>
-                        <li>Intégration d'Odoo pour entreprise de contrôle d'accès (gestion commerciale, stocks, process métier)</li>
-                        <li>Installation de serveurs HP ProLiant sous CentOS 7 avec redondance pour l'unité de production GNT Mobile</li>
-                    </ul>
-                </div>
+                <!-- French Professional Experience -->
+                <div class="content-fr">
+                    <h2>🧑‍💼 Expériences professionnelles</h2>
+                    
+                    <div class="experience-item">
+                        <h3>Responsable IT</h3>
+                        <div class="company">Bessa Promotion Immobilière (Alger)</div>
+                        <div class="period">2022 – Aujourd'hui</div>
+                        <ul>
+                            <li>Support IT & gestion réseau (serveurs HP ProLiant, Proxmox, VLAN, Ubiquiti Unifi)</li>
+                            <li>Développement de solutions internes (contrôle d'accès via Raspberry Pi, intégration Biotime, automatisation RH via API)</li>
+                            <li>Développement de modules Odoo (achats, automatisations, lien avec GLPI)</li>
+                            <li>Participation à la migration d'Odoo avec l'équipe Dev interne</li>
+                            <li><strong>Développement d'un chatbot AI contextuel</strong> (modèles internes + n8n) connecté aux données de l'entreprise</li>
+                        </ul>
+                    </div>
 
-                <div class="experience-item">
-                    <h3>Projet R&D – Intégration Digimarc & Odoo</h3>
-                    <div class="company">Projet indépendant</div>
-                    <div class="period">2020 – 2021</div>
-                    <ul>
-                        <li>Étude technique des codes-barres invisibles (type Digimarc) pour la traçabilité pharmaceutique</li>
-                        <li>Collaboration avec une imprimerie partenaire de Sandoz</li>
-                        <li>Analyse des procédés d'impression et de génération de codes</li>
-                        <li>Projet interrompu pour des raisons réglementaires</li>
-                    </ul>
-                </div>
+                    <div class="experience-item">
+                        <h3>Freelance Odoo / Intégration IT</h3>
+                        <div class="company">SmoothTechnologie, GNT Mobile</div>
+                        <div class="period">2021 – 2022</div>
+                        <ul>
+                            <li>Intégration d'Odoo pour entreprise de contrôle d'accès (gestion commerciale, stocks, process métier)</li>
+                            <li>Installation de serveurs HP ProLiant sous CentOS 7 avec redondance pour l'unité de production GNT Mobile</li>
+                        </ul>
+                    </div>
 
-                <div class="experience-item">
-                    <h3>Stagiaire développeur Odoo</h3>
-                    <div class="company">Projet Officine Pharmaceutique</div>
-                    <div class="period">2019 – 2020</div>
-                    <ul>
-                        <li>Intégration Odoo dans des pharmacies (POS, gestion commerciale et stocks)</li>
-                        <li>Développement de modules métier pharma</li>
-                        <li>Collaboration avec Digimarc Solutions pour la traçabilité</li>
-                    </ul>
-                </div>
+                    <div class="experience-item">
+                        <h3>Projet R&D – Intégration Digimarc & Odoo</h3>
+                        <div class="company">Projet indépendant</div>
+                        <div class="period">2020 – 2021</div>
+                        <ul>
+                            <li>Étude technique des codes-barres invisibles (type Digimarc) pour la traçabilité pharmaceutique</li>
+                            <li>Collaboration avec une imprimerie partenaire de Sandoz</li>
+                            <li>Analyse des procédés d'impression et de génération de codes</li>
+                            <li>Projet interrompu pour des raisons réglementaires</li>
+                        </ul>
+                    </div>
 
-                <div class="experience-item">
-                    <h3>Responsable de magasin</h3>
-                    <div class="company">Solutions IPTV / Télévision</div>
-                    <div class="period">2018 – 2019</div>
-                    <ul>
-                        <li>Gestion de 3 magasins (vente, installation, SAV)</li>
-                        <li>Implémentation d'Odoo POS pour les ventes</li>
-                        <li>Configuration logistique (stocks, emplacements, processus métiers optimisés)</li>
-                    </ul>
-                </div>
+                    <div class="experience-item">
+                        <h3>Stagiaire développeur Odoo</h3>
+                        <div class="company">Projet Officine Pharmaceutique</div>
+                        <div class="period">2019 – 2020</div>
+                        <ul>
+                            <li>Intégration Odoo dans des pharmacies (POS, gestion commerciale et stocks)</li>
+                            <li>Développement de modules métier pharma</li>
+                            <li>Collaboration avec Digimarc Solutions pour la traçabilité</li>
+                        </ul>
+                    </div>
 
-                <div class="experience-item">
-                    <h3>Télévendeur / Visiteur Pharmaceutique</h3>
-                    <div class="company">Somepharme, IVPP, Hydrapharm, Générique-Pharm</div>
-                    <div class="period">2014 – 2018</div>
-                    <ul>
-                        <li>Télévente B2B et visites médicales</li>
-                        <li>Gestion d'un portefeuille clients dans le secteur pharmaceutique</li>
-                        <li>Bonne connaissance du circuit de distribution du médicament</li>
-                    </ul>
+                    <div class="experience-item">
+                        <h3>Responsable de magasin</h3>
+                        <div class="company">Solutions IPTV / Télévision</div>
+                        <div class="period">2018 – 2019</div>
+                        <ul>
+                            <li>Gestion de 3 magasins (vente, installation, SAV)</li>
+                            <li>Implémentation d'Odoo POS pour les ventes</li>
+                            <li>Configuration logistique (stocks, emplacements, processus métiers optimisés)</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Télévendeur / Visiteur Pharmaceutique</h3>
+                        <div class="company">Somepharme, IVPP, Hydrapharm, Générique-Pharm</div>
+                        <div class="period">2014 – 2018</div>
+                        <ul>
+                            <li>Télévente B2B et visites médicales</li>
+                            <li>Gestion d'un portefeuille clients dans le secteur pharmaceutique</li>
+                            <li>Bonne connaissance du circuit de distribution du médicament</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="section">
-                <h2>🎓 Formation</h2>
-                
-                <div class="education-item">
-                    <h3>Ingénieur d'application (incomplet)</h3>
-                    <div class="school">École d'ingénierie en informatique</div>
-                    <div class="period">2015 – 2017</div>
-                    <ul>
-                        <li>2,5 années de formation en génie informatique</li>
-                        <li>Développement logiciel, systèmes & réseaux</li>
-                    </ul>
+                <!-- English Education & Languages -->
+                <div class="content-en">
+                    <h2>🎓 Education</h2>
+                    
+                    <div class="education-item">
+                        <h3>Application Engineer (incomplete)</h3>
+                        <div class="school">Computer Engineering School</div>
+                        <div class="period">2015 – 2017</div>
+                        <ul>
+                            <li>2.5 years of computer engineering training</li>
+                            <li>Software development, systems & networks</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>BTS Computer Science – Database Option</h3>
+                        <div class="school">Institut De Formation St Michel, El Biar (Algiers)</div>
+                        <div class="period">2013 – 2015</div>
+                        <ul>
+                            <li>Data modeling, application development, information systems</li>
+                        </ul>
+                    </div>
+
+                    <h2>🌍 Languages</h2>
+                    <div class="languages">
+                        <div class="language-item">🇫🇷 French: Fluent</div>
+                        <div class="language-item">🇺🇸 English: Good level</div>
+                        <div class="language-item">🇩🇿 Arabic: Native</div>
+                    </div>
+
+                    <h2>🎯 Interests</h2>
+                    <div class="interests">
+                        <p>🎵 Musician • 🔧 Tech tinkering • 🤖 AI • 🛠️ DIY projects</p>
+                    </div>
                 </div>
 
-                <div class="education-item">
-                    <h3>BTS Informatique – Option Bases de Données</h3>
-                    <div class="school">Institut De Formation St Michel, El Biar (Alger)</div>
-                    <div class="period">2013 – 2015</div>
-                    <ul>
-                        <li>Modélisation de données, développement d'applications, systèmes d'information</li>
-                    </ul>
-                </div>
+                <!-- French Education & Languages -->
+                <div class="content-fr">
+                    <h2>🎓 Formation</h2>
+                    
+                    <div class="education-item">
+                        <h3>Ingénieur d'application (incomplet)</h3>
+                        <div class="school">École d'ingénierie en informatique</div>
+                        <div class="period">2015 – 2017</div>
+                        <ul>
+                            <li>2,5 années de formation en génie informatique</li>
+                            <li>Développement logiciel, systèmes & réseaux</li>
+                        </ul>
+                    </div>
 
-                <h2>🌍 Langues</h2>
-                <div class="languages">
-                    <div class="language-item">🇫🇷 Français : Courant</div>
-                    <div class="language-item">🇺🇸 Anglais : Bon niveau</div>
-                    <div class="language-item">🇩🇿 Arabe : Langue maternelle</div>
-                </div>
+                    <div class="education-item">
+                        <h3>BTS Informatique – Option Bases de Données</h3>
+                        <div class="school">Institut De Formation St Michel, El Biar (Alger)</div>
+                        <div class="period">2013 – 2015</div>
+                        <ul>
+                            <li>Modélisation de données, développement d'applications, systèmes d'information</li>
+                        </ul>
+                    </div>
 
-                <h2>🎯 Centres d'intérêt</h2>
-                <div class="interests">
-                    <p>🎵 Musicien • 🔧 Bidouillage tech • 🤖 IA • 🛠️ Projets DIY</p>
+                    <h2>🌍 Langues</h2>
+                    <div class="languages">
+                        <div class="language-item">🇫🇷 Français : Courant</div>
+                        <div class="language-item">🇺🇸 Anglais : Bon niveau</div>
+                        <div class="language-item">🇩🇿 Arabe : Langue maternelle</div>
+                    </div>
+
+                    <h2>🎯 Centres d'intérêt</h2>
+                    <div class="interests">
+                        <p>🎵 Musicien • 🔧 Bidouillage tech • 🤖 IA • 🛠️ Projets DIY</p>
+                    </div>
                 </div>
             </div>
 
             <div class="section full-width">
-                <h2>🧠 Compétences techniques</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>💻 Langages & Développement</h4>
-                        <ul>
-                            <li>Python (scripts, API)</li>
-                            <li>SQL</li>
-                            <li>ERP Odoo (Fonctionnel & technique)</li>
-                            <li>Développement de modules</li>
-                        </ul>
+                <!-- English Skills -->
+                <div class="content-en">
+                    <h2>🧠 Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>💻 Languages & Development</h4>
+                            <ul>
+                                <li>Python (scripts, API)</li>
+                                <li>SQL</li>
+                                <li>ERP Odoo (Functional & technical)</li>
+                                <li>Module development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🗄️ Databases</h4>
+                            <ul>
+                                <li>PostgreSQL</li>
+                                <li>MySQL (basics)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🖥️ Systems & Networks</h4>
+                            <ul>
+                                <li>Linux (Debian, CentOS)</li>
+                                <li>Proxmox</li>
+                                <li>Ubiquiti Unifi</li>
+                                <li>VLAN</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🚀 DevOps & Automation</h4>
+                            <ul>
+                                <li>Docker</li>
+                                <li>Git</li>
+                                <li>n8n</li>
+                                <li>REST API</li>
+                                <li>GLPI</li>
+                                <li>Raspberry Pi</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🔧 Specialized Tools</h4>
+                            <ul>
+                                <li>Biotime (HR integration)</li>
+                                <li>Digimarc (technical analysis)</li>
+                                <li>POS, purchasing, inventory</li>
+                                <li>Data migration</li>
+                            </ul>
+                        </div>
                     </div>
-                    
-                    <div class="skill-category">
-                        <h4>🗄️ Bases de données</h4>
-                        <ul>
-                            <li>PostgreSQL</li>
-                            <li>MySQL (notions)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>🖥️ Systèmes & Réseaux</h4>
-                        <ul>
-                            <li>Linux (Debian, CentOS)</li>
-                            <li>Proxmox</li>
-                            <li>Ubiquiti Unifi</li>
-                            <li>VLAN</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>🚀 DevOps & Automation</h4>
-                        <ul>
-                            <li>Docker</li>
-                            <li>Git</li>
-                            <li>n8n</li>
-                            <li>API REST</li>
-                            <li>GLPI</li>
-                            <li>Raspberry Pi</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>🔧 Outils spécialisés</h4>
-                        <ul>
-                            <li>Biotime (intégration RH)</li>
-                            <li>Digimarc (analyse technique)</li>
-                            <li>POS, achats, stocks</li>
-                            <li>Migration de données</li>
-                        </ul>
+                </div>
+
+                <!-- French Skills -->
+                <div class="content-fr">
+                    <h2>🧠 Compétences techniques</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>💻 Langages & Développement</h4>
+                            <ul>
+                                <li>Python (scripts, API)</li>
+                                <li>SQL</li>
+                                <li>ERP Odoo (Fonctionnel & technique)</li>
+                                <li>Développement de modules</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🗄️ Bases de données</h4>
+                            <ul>
+                                <li>PostgreSQL</li>
+                                <li>MySQL (notions)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🖥️ Systèmes & Réseaux</h4>
+                            <ul>
+                                <li>Linux (Debian, CentOS)</li>
+                                <li>Proxmox</li>
+                                <li>Ubiquiti Unifi</li>
+                                <li>VLAN</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🚀 DevOps & Automation</h4>
+                            <ul>
+                                <li>Docker</li>
+                                <li>Git</li>
+                                <li>n8n</li>
+                                <li>API REST</li>
+                                <li>GLPI</li>
+                                <li>Raspberry Pi</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>🔧 Outils spécialisés</h4>
+                            <ul>
+                                <li>Biotime (intégration RH)</li>
+                                <li>Digimarc (analyse technique)</li>
+                                <li>POS, achats, stocks</li>
+                                <li>Migration de données</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-</body>
-</html>
+
+    <script>
+        // Language toggle functionality
+        const languageToggle = document.getElementById('languageToggle');
+        const body = document.body;
+        const enLabel = document.getElementById('en-label');
+        const frLabel = document.getElementById('fr-label');
+        const htmlElement = document.documentElement;
+
+        // Set default language to English
+        body.classList.remove('lang-fr');
+        htmlElement.lang = 'en';
+
+        languageToggle.addEventListener('click', function() {
+            const isFrench = body.classList.contains('lang-fr');
+            
+            if (isFrench) {
+                // Switch to English
+                body.classList.remove('lang-fr');
+                languageToggle.classList.remove('french');
+                enLabel.classList.add('active');
+                frLabel.classList.remove('active');
+                htmlElement.lang = 'en';
+                document.title = 'Messaoudi Abderraouf - Resume';
+            } else {
+                // Switch to French
+                body.classList.add('lang-fr');
+                languageToggle.classList.add('french');
+                enLabel.classList.remove('active');
+                frLabel.classList.add('active');
+                htmlElement.lang = 'fr';
+                document.title = 'Messaoudi Abderraouf - CV';
+            }
+        });
+
+        // Initialize with English by default
+        document.addEventListener('DOMContentLoaded', function() {
+            enLabel.classList.add('active');
+            frLabel.classList.remove('active');
+        });
+    </script>
