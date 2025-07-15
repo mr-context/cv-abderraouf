@@ -859,4 +859,155 @@
                     <h2 class="education">Formation</h2>
                     
                     <div class="education-item">
-                        <h3>Ingé
+                        <h3>Ingénieur d'application (incomplet)</h3>
+                        <div class="school">École d'ingénierie en informatique</div>
+                        <div class="period">2015 – 2017</div>
+                        <ul>
+                            <li>2,5 années de formation en génie informatique</li>
+                            <li>Développement logiciel, systèmes & réseaux</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>BTS Informatique – Option Bases de Données</h3>
+                        <div class="school">Institut De Formation St Michel, El Biar (Alger)</div>
+                        <div class="period">2013 – 2015</div>
+                        <ul>
+                            <li>Modélisation de données, développement d'applications, systèmes d'information</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="languages">Langues</h2>
+                    <div class="languages">
+                        <div class="language-item">Français : Courant</div>
+                        <div class="language-item">Anglais : Bon niveau</div>
+                        <div class="language-item">Arabe : Langue maternelle</div>
+                    </div>
+
+                    <h2 class="interests">Centres d'intérêt</h2>
+                    <div class="interests">
+                        <p>Musicien • Bidouillage tech • IA • Projets DIY</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section full-width">
+                <!-- English Skills -->
+                <div class="content-en">
+                    <h2 class="skills">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Languages & Development</h4>
+                            <ul>
+                                <li>Python (scripts, API)</li>
+                                <li>SQL</li>
+                                <li>ERP Odoo (Functional & technical)</li>
+                                <li>Module development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Infrastructure & Networks</h4>
+                            <ul>
+                                <li>Linux (CentOS, Ubuntu)</li>
+                                <li>Proxmox virtualization</li>
+                                <li>HP ProLiant servers</li>
+                                <li>Ubiquiti UniFi (VLAN, networking)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Automation & Integration</h4>
+                            <ul>
+                                <li>n8n workflows</li>
+                                <li>API development & integration</li>
+                                <li>Raspberry Pi projects</li>
+                                <li>GLPI integration</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>AI & Emerging Tech</h4>
+                            <ul>
+                                <li>AI Chatbot development</li>
+                                <li>Local LLM models</li>
+                                <li>Data integration</li>
+                                <li>Process automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- French Skills -->
+                <div class="content-fr">
+                    <h2 class="skills">Compétences techniques</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Langages & Développement</h4>
+                            <ul>
+                                <li>Python (scripts, API)</li>
+                                <li>SQL</li>
+                                <li>ERP Odoo (Fonctionnel & technique)</li>
+                                <li>Développement de modules</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Infrastructure & Réseaux</h4>
+                            <ul>
+                                <li>Linux (CentOS, Ubuntu)</li>
+                                <li>Virtualisation Proxmox</li>
+                                <li>Serveurs HP ProLiant</li>
+                                <li>Ubiquiti UniFi (VLAN, réseau)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Automatisation & Intégration</h4>
+                            <ul>
+                                <li>Workflows n8n</li>
+                                <li>Développement & intégration API</li>
+                                <li>Projets Raspberry Pi</li>
+                                <li>Intégration GLPI</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>IA & Technologies émergentes</h4>
+                            <ul>
+                                <li>Développement de chatbot IA</li>
+                                <li>Modèles LLM locaux</li>
+                                <li>Intégration de données</li>
+                                <li>Automatisation de processus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const languageToggle = document.getElementById('languageToggle');
+        const enLabel = document.getElementById('en-label');
+        const frLabel = document.getElementById('fr-label');
+        const body = document.body;
+
+        languageToggle.addEventListener('click', function() {
+            if (body.classList.contains('lang-fr')) {
+                // Switch to English
+                body.classList.remove('lang-fr');
+                languageToggle.classList.remove('french');
+                enLabel.classList.add('active');
+                frLabel.classList.remove('active');
+            } else {
+                // Switch to French
+                body.classList.add('lang-fr');
+                languageToggle.classList.add('french');
+                enLabel.classList.remove('active');
+                frLabel.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
