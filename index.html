@@ -82,6 +82,7 @@
             flex-wrap: wrap;
             position: relative;
             z-index: 1;
+            margin-bottom: 20px;
         }
 
         .contact-item {
@@ -94,6 +95,30 @@
         .contact-item::before {
             content: attr(data-icon);
             font-size: 1.2em;
+        }
+
+        .pdf-download {
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b, #a93226);
         }
 
         .main-content {
@@ -286,6 +311,10 @@
                 background: #2c3e50;
                 color: white;
             }
+
+            .pdf-download {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -298,6 +327,12 @@
                 <div class="contact-item" data-icon="📍">Alger</div>
                 <div class="contact-item" data-icon="📧">mesaoudi.raouf@outlook.com</div>
                 <div class="contact-item" data-icon="📞">0557042421</div>
+            </div>
+            
+            <div class="pdf-download">
+                <a href="#" onclick="window.print(); return false;" class="download-btn">
+                    📄 Télécharger PDF
+                </a>
             </div>
         </header>
 
