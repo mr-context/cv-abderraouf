@@ -399,13 +399,19 @@
             }
         }
 
-        /* OPTIMISATIONS POUR L'IMPRESSION PDF */
+        /* OPTIMISATIONS MAJEURES POUR PDF */
         @media print {
+            @page {
+                margin: 15mm;
+                size: A4;
+            }
+
             body {
                 background: white !important;
                 padding: 0 !important;
-                font-size: 11pt;
-                line-height: 1.4;
+                font-size: 10pt !important;
+                line-height: 1.3 !important;
+                color: #333 !important;
             }
             
             .container {
@@ -414,14 +420,16 @@
                 max-width: none !important;
                 width: 100% !important;
                 margin: 0 !important;
+                background: white !important;
             }
             
             .header {
                 background: #2c3e50 !important;
                 color: white !important;
-                padding: 25px !important;
+                padding: 15mm 10mm !important;
                 text-align: center;
                 page-break-inside: avoid;
+                margin-bottom: 5mm !important;
             }
 
             .header::before {
@@ -429,22 +437,25 @@
             }
 
             .header h1 {
-                font-size: 1.8em !important;
-                margin-bottom: 8px !important;
+                font-size: 24pt !important;
+                margin-bottom: 5mm !important;
+                font-weight: 700 !important;
             }
 
             .header .subtitle {
-                font-size: 1.1em !important;
-                margin-bottom: 15px !important;
+                font-size: 14pt !important;
+                margin-bottom: 5mm !important;
+                opacity: 0.9 !important;
             }
 
             .contact-info {
-                margin-bottom: 10px !important;
-                gap: 20px !important;
+                margin-bottom: 5mm !important;
+                gap: 15mm !important;
+                font-size: 11pt !important;
             }
 
             .contact-item {
-                font-size: 0.9em !important;
+                font-size: 11pt !important;
             }
 
             .pdf-download, .language-toggle {
@@ -452,107 +463,163 @@
             }
 
             .main-content {
-                padding: 20px !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 25px !important;
+                padding: 0 !important;
+                display: block !important;
+                column-count: 2 !important;
+                column-gap: 8mm !important;
+                column-fill: balance !important;
             }
 
             .section {
-                margin-bottom: 20px !important;
+                margin-bottom: 5mm !important;
+                break-inside: avoid !important;
             }
 
             .section h2 {
-                font-size: 1.3em !important;
-                margin-bottom: 15px !important;
+                font-size: 14pt !important;
+                margin-bottom: 3mm !important;
                 page-break-after: avoid;
+                color: #2c3e50 !important;
+                font-weight: 700 !important;
+                padding-left: 0 !important;
+            }
+
+            .section h2::before {
+                display: none !important;
+            }
+
+            .section h2::after {
+                display: none !important;
             }
 
             .experience-item, .education-item {
                 background: #f9f9f9 !important;
-                padding: 15px !important;
-                margin-bottom: 12px !important;
-                border-radius: 8px !important;
+                padding: 3mm !important;
+                margin-bottom: 3mm !important;
+                border-radius: 2mm !important;
                 box-shadow: none !important;
                 page-break-inside: avoid;
-                border-left: 3px solid #3498db !important;
-            }
-
-            .experience-item h3, .education-item h3 {
-                font-size: 1.1em !important;
-                margin-bottom: 5px !important;
-            }
-
-            .experience-item .company, .education-item .school {
-                font-size: 0.95em !important;
-            }
-
-            .experience-item .period, .education-item .period {
-                font-size: 0.85em !important;
-                margin-bottom: 8px !important;
-            }
-
-            .experience-item li, .education-item li {
-                font-size: 0.85em !important;
-                margin-bottom: 3px !important;
-                line-height: 1.3 !important;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 12px !important;
-            }
-
-            .skill-category {
-                padding: 12px !important;
-                border-radius: 6px !important;
-                background: #f9f9f9 !important;
-            }
-
-            .skill-category h4 {
-                font-size: 0.9em !important;
-                margin-bottom: 8px !important;
-            }
-
-            .skill-category li {
-                font-size: 0.8em !important;
-                padding: 1px 0 !important;
-            }
-
-            .languages {
-                gap: 8px !important;
-            }
-
-            .language-item {
-                padding: 6px 12px !important;
-                font-size: 0.8em !important;
-                border-radius: 12px !important;
-                background: #3498db !important;
-                box-shadow: none !important;
-            }
-
-            .interests {
-                padding: 12px !important;
-                background: #f9f9f9 !important;
-            }
-
-            .interests p {
-                font-size: 0.85em !important;
-            }
-
-            /* Forcer les couleurs */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            /* Éviter les coupures de page */
-            .experience-item, .education-item, .skill-category {
+                border-left: 2mm solid #3498db !important;
                 break-inside: avoid !important;
             }
 
-            /* Optimiser l'espace */
+            .experience-item h3, .education-item h3 {
+                font-size: 12pt !important;
+                margin-bottom: 1mm !important;
+                color: #2c3e50 !important;
+                font-weight: 600 !important;
+            }
+
+            .experience-item .company, .education-item .school {
+                font-size: 10pt !important;
+                color: #3498db !important;
+                font-weight: 600 !important;
+                margin-bottom: 1mm !important;
+            }
+
+            .experience-item .period, .education-item .period {
+                font-size: 9pt !important;
+                margin-bottom: 2mm !important;
+                color: #666 !important;
+            }
+
+            .experience-item ul, .education-item ul {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .experience-item li, .education-item li {
+                font-size: 9pt !important;
+                margin-bottom: 1mm !important;
+                line-height: 1.2 !important;
+                padding-left: 3mm !important;
+            }
+
+            .experience-item li::before, .education-item li::before {
+                color: #3498db !important;
+                font-size: 8pt !important;
+            }
+
+            .skills-grid {
+                display: block !important;
+                column-count: 1 !important;
+            }
+
+            .skill-category {
+                padding: 2mm !important;
+                border-radius: 1mm !important;
+                background: #f9f9f9 !important;
+                margin-bottom: 2mm !important;
+                break-inside: avoid !important;
+                border-left: 1mm solid #2ecc71 !important;
+            }
+
+            .skill-category h4 {
+                font-size: 10pt !important;
+                margin-bottom: 1mm !important;
+                color: #2c3e50 !important;
+                font-weight: 600 !important;
+            }
+
+            .skill-category li {
+                font-size: 9pt !important;
+                padding: 0.5mm 0 !important;
+                color: #555 !important;
+            }
+
+            .languages {
+                gap: 2mm !important;
+                margin-bottom: 3mm !important;
+            }
+
+            .language-item {
+                padding: 1.5mm 3mm !important;
+                font-size: 9pt !important;
+                border-radius: 3mm !important;
+                background: #3498db !important;
+                color: white !important;
+                box-shadow: none !important;
+                font-weight: 600 !important;
+            }
+
+            .interests {
+                padding: 3mm !important;
+                background: #f9f9f9 !important;
+                border-radius: 2mm !important;
+            }
+
+            .interests p {
+                font-size: 9pt !important;
+                color: #555 !important;
+            }
+
+            /* Force column breaks strategically */
             .full-width {
-                grid-column: 1 / -1 !important;
+                column-span: all !important;
+                break-before: auto !important;
+                break-after: auto !important;
+            }
+
+            /* Ensure good color printing */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Fix text alignment in print */
+            .header {
+                text-align: center !important;
+            }
+
+            /* Better spacing for different sections */
+            .section:first-child {
+                break-before: auto !important;
+            }
+
+            /* Optimize column layout */
+            .main-content .section:nth-child(1) {
+                break-before: column !important;
             }
         }
     </style>
@@ -792,51 +859,4 @@
                     <h2 class="education">Formation</h2>
                     
                     <div class="education-item">
-                        <h3>Ingénieur d'application (incomplet)</h3>
-                        <div class="school">École d'ingénierie en informatique</div>
-                        <div class="period">2015 – 2017</div>
-                        <ul>
-                            <li>2,5 années de formation en génie informatique</li>
-                            <li>Développement logiciel, systèmes & réseaux</li>
-                        </ul>
-                    </div>
-
-                    <div class="education-item">
-                        <h3>BTS Informatique – Option Bases de Données</h3>
-                        <div class="school">Institut De Formation St Michel, El Biar (Alger)</div>
-                        <div class="period">2013 – 2015</div>
-                        <ul>
-                            <li>Modélisation de données, développement d'applications, systèmes d'information</li>
-                        </ul>
-                    </div>
-
-                    <h2 class="languages">Langues</h2>
-                    <div class="languages">
-                        <div class="language-item">Français : Courant</div>
-                        <div class="language-item">Anglais : Bon niveau</div>
-                        <div class="language-item">Arabe : Langue maternelle</div>
-                    </div>
-
-                    <h2 class="interests">Centres d'intérêt</h2>
-                    <div class="interests">
-                        <p>Musicien • Bidouillage tech • IA • Projets DIY</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section full-width">
-                <!-- English Skills -->
-                <div class="content-en">
-                    <h2 class="skills">Technical Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Languages & Development</h4>
-                            <ul>
-                                <li>Python (scripts, API)</li>
-                                <li>SQL</li>
-                                <li>ERP Odoo (Functional & technical)</li>
-                                <li>Module development</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-category">
+                        <h3>Ingé
