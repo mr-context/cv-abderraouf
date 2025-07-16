@@ -93,11 +93,10 @@
             height: 21px;
             background: white;
             border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translateX(0);
+            transition: transform 0.3s ease;
         }
 
-        .toggle-switch.french::before {
+        .toggle-switch.active::before {
             transform: translateX(24px);
         }
 
@@ -352,7 +351,7 @@
             grid-column: 1 / -1;
         }
 
-        /* Hidden content by default */
+        /* Language switcher - improved */
         .content-fr {
             display: none;
         }
@@ -823,42 +822,6 @@
                     <h2 class="education">Education</h2>
                     
                     <div class="education-item">
-                        <h3>Application Engineer (incomplete)</h3>
-                        <div class="school">Computer Engineering School</div>
-                        <div class="period">2015 – 2017</div>
-                        <ul>
-                            <li>2.5 years of computer engineering training</li>
-                            <li>Software development, systems & networks</li>
-                        </ul>
-                    </div>
-
-                    <div class="education-item">
-                        <h3>BTS Computer Science – Database Option</h3>
-                        <div class="school">Institut De Formation St Michel, El Biar (Algiers)</div>
-                        <div class="period">2013 – 2015</div>
-                        <ul>
-                            <li>Data modeling, application development, information systems</li>
-                        </ul>
-                    </div>
-
-                    <h2 class="languages">Languages</h2>
-                    <div class="languages">
-                        <div class="language-item">French: Fluent</div>
-                        <div class="language-item">English: Good level</div>
-                        <div class="language-item">Arabic: Native</div>
-                    </div>
-
-                    <h2 class="interests">Interests</h2>
-                    <div class="interests">
-                        <p>Musician • Tech tinkering • AI • DIY projects</p>
-                    </div>
-                </div>
-
-                <!-- French Education & Languages -->
-                <div class="content-fr">
-                    <h2 class="education">Formation</h2>
-                    
-                    <div class="education-item">
                         <h3>Ingénieur d'application (incomplet)</h3>
                         <div class="school">École d'ingénierie en informatique</div>
                         <div class="period">2015 – 2017</div>
@@ -988,26 +951,93 @@
     </div>
 
     <script>
+        // Sélection des éléments
         const languageToggle = document.getElementById('languageToggle');
         const enLabel = document.getElementById('en-label');
         const frLabel = document.getElementById('fr-label');
         const body = document.body;
 
+        // Variable pour tracker l'état actuel
+        let isFrench = false;
+
+        // Fonction pour basculer vers le français
+        function switchToFrench() {
+            body.classList.add('lang-fr');
+            languageToggle.classList.add('active');
+            enLabel.classList.remove('active');
+            frLabel.classList.add('active');
+            isFrench = true;
+        }
+
+        // Fonction pour basculer vers l'anglais
+        function switchToEnglish() {
+            body.classList.remove('lang-fr');
+            languageToggle.classList.remove('active');
+            enLabel.classList.add('active');
+            frLabel.classList.remove('active');
+            isFrench = false;
+        }
+
+        // Écouteur d'événement pour le toggle
         languageToggle.addEventListener('click', function() {
-            if (body.classList.contains('lang-fr')) {
-                // Switch to English
-                body.classList.remove('lang-fr');
-                languageToggle.classList.remove('french');
-                enLabel.classList.add('active');
-                frLabel.classList.remove('active');
+            if (isFrench) {
+                switchToEnglish();
             } else {
-                // Switch to French
-                body.classList.add('lang-fr');
-                languageToggle.classList.add('french');
-                enLabel.classList.remove('active');
-                frLabel.classList.add('active');
+                switchToFrench();
             }
         });
+
+        // Écouteurs pour les labels également
+        enLabel.addEventListener('click', function() {
+            if (isFrench) {
+                switchToEnglish();
+            }
+        });
+
+        frLabel.addEventListener('click', function() {
+            if (!isFrench) {
+                switchToFrench();
+            }
+        });
+
+        // Initialisation - s'assurer que l'anglais est actif par défaut
+        switchToEnglish();
     </script>
 </body>
 </html>
+                        <h3>Application Engineer (incomplete)</h3>
+                        <div class="school">Computer Engineering School</div>
+                        <div class="period">2015 – 2017</div>
+                        <ul>
+                            <li>2.5 years of computer engineering training</li>
+                            <li>Software development, systems & networks</li>
+                        </ul>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>BTS Computer Science – Database Option</h3>
+                        <div class="school">Institut De Formation St Michel, El Biar (Algiers)</div>
+                        <div class="period">2013 – 2015</div>
+                        <ul>
+                            <li>Data modeling, application development, information systems</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="languages">Languages</h2>
+                    <div class="languages">
+                        <div class="language-item">French: Fluent</div>
+                        <div class="language-item">English: Good level</div>
+                        <div class="language-item">Arabic: Native</div>
+                    </div>
+
+                    <h2 class="interests">Interests</h2>
+                    <div class="interests">
+                        <p>Musician • Tech tinkering • AI • DIY projects</p>
+                    </div>
+                </div>
+
+                <!-- French Education & Languages -->
+                <div class="content-fr">
+                    <h2 class="education">Formation</h2>
+                    
+                    <div class="education-item">
